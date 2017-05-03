@@ -24,6 +24,16 @@ siguienteLetra letra =
   case letra of
     'z' -> 'a'
     'Z' -> 'A'
+    'á' -> siguienteLetra 'a'
+    'Á' -> siguienteLetra 'A'
+    'é' -> siguienteLetra 'e'
+    'É' -> siguienteLetra 'E'
+    'í' -> siguienteLetra 'i'
+    'Í' -> siguienteLetra 'I'
+    'ó' -> siguienteLetra 'o'
+    'Ó' -> siguienteLetra 'O'
+    'ú' -> siguienteLetra 'u'
+    'Ú' -> siguienteLetra 'U'
     otraLetra -> if esLetra letra then letra |> Char.toCode |> (+) 1 |> Char.fromCode else letra
 
 esLetra letra = Char.isLower letra || Char.isUpper letra
