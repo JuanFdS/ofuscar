@@ -22,7 +22,10 @@ ofuscar texto = texto |> String.words |> List.map (String.map siguienteLetra) |>
 siguienteLetra letra =
   case letra of
     'z' -> 'a'
-    otraLetra -> letra |> Char.toCode |> (+) 1 |> Char.fromCode
+    'Z' -> 'A'
+    otraLetra -> if esLetra letra then letra |> Char.toCode |> (+) 1 |> Char.fromCode else letra
+
+esLetra letra = Char.isLower letra || Char.isUpper letra
 
 view : Model -> Html Msg
 view model = div [] [ textarea [onInput NuevoTexto] [], text model ]
