@@ -2,6 +2,7 @@ module Ofuscar exposing (..)
 import Html exposing (..)
 import Html.Events exposing (..)
 import Char exposing (..)
+import Html.Attributes exposing (..)
 
 main = Html.beginnerProgram { model = model, update = update, view = view }
 
@@ -27,5 +28,9 @@ siguienteLetra letra =
 
 esLetra letra = Char.isLower letra || Char.isUpper letra
 
+textAreaStyle = style [("font-size", "xx-large"),("margin-top", "40px"),("width","75%"),("backgroundColor", "whiteSmoke")]
+divStyle = style [("backgroundColor", "gray"),("height","100%")]
+textStyle = style [("font-size", "xx-large"), ("color", "whiteSmoke")]
+
 view : Model -> Html Msg
-view model = div [] [ textarea [onInput NuevoTexto] [], text model ]
+view model = div [divStyle, align "center"] [ div [] [textarea [textAreaStyle, onInput NuevoTexto] []], div [textStyle] [text model] ]
